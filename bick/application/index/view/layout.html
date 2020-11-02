@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <title>{$arr[0]["value"]}</title>
+    <meta name="description" content="{$arr[2]['value']}" />
+    <meta name="keywords" content="{$arr[1]['value']}" />
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/jquery.js"></script>
+    <!--<script src="__PUBLIC__/jquery.error.js" type="text/javascript"></script>-->
+    <script src="__PUBLIC__/jtemplates.js" type="text/javascript"></script>
+    <!--<script src="__PUBLIC__/jquery.form.js" type="text/javascript"></script>-->
+    <script src="__PUBLIC__/lazy.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__PUBLIC__/wp-sns-share.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/voterajax.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/userregister.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/pagenavi-css.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="__PUBLIC__/votestyles.css" type="text/css" />
+    <link rel="stylesheet" href="__PUBLIC__/voteitup.css" type="text/css" />
+    <script src="__PUBLIC__/zan.js"></script>
+    <script type="text/javascript">
+        function IFocuse(th, o) {
+            var t = $(th);
+            var c = t.attr("class");
+            if (o) {
+                t.removeClass(c).addClass(c+"-over");
+            }
+            else {
+                t.removeClass(c).addClass(c.replace("-over",""));
+            }
+        }
+    </script>
+</head>
+<body class="xh_body">
+<script src="__PUBLIC__/common.js" type="text/javascript"></script>
+<script>
+    function subForm()
+    {
+
+        formsearch.submit();
+        //form1为form的id
+    }
+</script>
+<script type="text/javascript">
+    function showMask() {
+        $("#mask").css("height", $(document).height());
+        $("#mask").css("width", $(document).width());
+        $("#mask").show();
+    }
+</script>
+<div id="mask" class="mask" onclick="CloseMask()"></div>
+<div id="header_wrap">
+    <div id="header">
+        <div style="float: left; width: 310px;">
+            <h1>
+                <a href="/" title="宽屏大气文章类--41天鹰模板">宽屏大气文章类--41天鹰模板</a>
+                <div class="" id="logo-sub-class"></div>
+            </h1>
+        </div>
+        <div id="navi">
+
+            <ul id="jsddm">
+                <li><a class="navi_home" href="{:url('/index')}">首页</a></li>
+                {foreach $cateArr as $value}
+                {if $value['pid']==0 }
+                <li>
+                    <a href="http://localhost/LearnPhp/bick/public/index/{if $value['type']==1}artlist{elseif $value['type']==3}imglist{else}page{/if}/index/cateid/{$value['id']}">{$value['catename']}</a>
+
+                {if isset($value['children'])}
+                    <ul>
+                        {foreach $value['children'] as $v}
+                        <li>
+                            <a href="http://localhost/LearnPhp/bick//public/index/{if $value['type']==1}artlist{elseif $value['type']==3}imglist{else}page{/if}/index/cateid/{$v['id']}">{$v['catename']}</a>
+
+                        </li>
+                        {/foreach}
+                    </ul>
+                {/if}
+                </li>
+                {/if}
+                {/foreach}
+            </ul>
+
+            <div style="clear: both;">
+            </div>
+
+
+        </div>
+        <div style="float: right; width: 209px;">
+            <div class="widget" style="height: 30px; padding-top: 20px;">
+                <div style="float: left;">
+                    <form  name="formsearch" action="/plus/search.php"><input type="hidden" name="kwtype" value="0" />
+                        <input name="q" type="text" style="background-color: #000000;padding-left: 10px; font-size: 12px;font-family: 'Microsoft Yahei'; color: #999999;height: 29px; width: 160px; border: solid 1px #666666; line-height: 28px;" id="go" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+                    </form>
+                </div>
+                <div style="float: left;">
+                    <img src="__IMG__/search-new.png" id="imgSearch" style="cursor: pointer; margin: 0px;
+                        padding: 0px;" onclick="subForm()"  /></div>
+                <div style="clear: both;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--</div>-->
+<!--头部结束-->
+
+
+
+{__CONTENT__}
+
+<!--网页尾部-->
+
+<div id="footer_wrap">
+    <div id="footer">
+        <div class="footer_navi">
+            <ul id="menu-%e5%b0%be%e9%83%a8%e5%af%bc%e8%88%aa" class="menu">
+
+                {foreach $aee as $aff}
+
+                <li id="menu-item-156" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-156">
+                    <a href="http://localhost/LearnPhp/bick/public/index/{if $value['type']==1}artlist{elseif $value['type']==3}imglist{else}page{/if}/index/cateid/{$v['id']}">{$aff.catename}</a></li>
+
+
+                {/foreach}
+
+            </ul>
+        </div>
+        <div class="footer_info">
+            <span class="legal">Copyright &#169; 2016-2020 qq群：484519446 版权所有&#160;&#160;&#160;<a href="#">
+                琼ICP备******号</a>&#160;&#160;&#160;
+
+        </div>
+    </div>
+</div>
+<div style="display: none;" id="scroll">
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/z700bike_global.js"></script>
+</body>
+</html>
+<html>
+<script>document.getElementById("life"+"").style.display="n"+"o"+"ne";</script>

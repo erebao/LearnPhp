@@ -1,0 +1,99 @@
+
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">系统</a>
+                        </li>
+                        <li>
+                            <a href="#">用户组管理</a>
+                        </li>
+                        <li class="active">添加用户组</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-header bordered-bottom bordered-blue">
+                                    <span class="widget-caption">新增用户组</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div id="horizontal-form">
+                                        <form class="form-horizontal" role="form" action="" method="post">
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-2 control-label no-padding-right">用户组名称</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control"  placeholder="" name="title" required="" type="text">
+                                                </div>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status" class="col-sm-2 control-label no-padding-right">启用状态</label>
+                                                <div class="col-sm-6">
+                                                    <p class="help-block col-sm-4 red">
+                                                        <label>
+                                                            <input class="checkbox-slider colored-darkorange" name="status" value="1" checked="checked" type="checkbox">
+                                                            <span class="text"></span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="rules" class="col-sm-2 control-label no-padding-right"></label>
+                                                <div class="col-sm-6">
+                                                    <table class="table table-hover">
+                                                        <thead class="bordered-darkorange">
+                                                        <tr>
+                                                            <th>
+                                                                配置权限
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {foreach $arr as $add}
+                                                        <tr>
+                                                            <td>
+                                                                <label>
+                                                                    {if $add.pid!==0}
+                                                                    |
+                                                                    {for start="0" end="$add.level"}
+                                                                    ---
+                                                                    {/for}
+                                                                    {/if}
+                                                                    <input name="rules[]" value="{$add.id}" dataid="" class="inverted checkbox-parent {if condition="$add['level'] neq 0"} checkbox-child {/if} " type="checkbox">
+                                                                    <span {if condition="$add['level'] eq 0"} style="font-weight:bold; font-size:14px;" {/if} class="text">{$add.title}</span>
+                                                                    <!--<input type="checkbox" name="rules[]" class="inverted checkbox {if $add['level']==0} checkbox-child {/if}">
+                                                                    <span class="text" {if $add.level==0} style="font-weight:800; font-size:14px;" {/if}>{$add.title}</span>-->
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        {/foreach}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-default">保存信息</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->

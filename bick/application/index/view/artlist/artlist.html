@@ -1,0 +1,127 @@
+
+
+    <div id="wrapper">
+       
+
+    <div id="xh_container">
+        <div id="xh_content">
+
+        <div class="path"><a href='#'>主页</a> > <a href='#'></a> > </div><div class="clear"></div>
+            <div class="xh_area_h_3" style="margin-top: 40px;">
+                {foreach $cateid as $cate}
+
+
+    <div class="xh_post_h_3 ofh">
+                            <div class="xh">
+                                <a target="_blank" href="http://localhost/LearnPhp/bick/public/index/article/index/id/{$cate.id}" title="{$cate.title}">
+                                    <img src="http://localhost/LearnPhp/bick/public{$cate.thumb}" alt="{$cate.title}" height="article" width="400"></a></div>
+                            <div class="r ofh">
+                                <h2 class="xh_post_h_3_title ofh" style="height:60px;">
+                                    <a target="_blank" href="http://localhost/LearnPhp/bick/public/index/article/index/id/{$cate.id}" title="{$cate.title}">{$cate.title}</a>
+                                </h2>
+                                <span class="time">{:date('Y-m-d H-i-s',$cate.time)}</span>
+                                <div class="xh_post_h_3_entry ofh" style="color:#555;height:80px; overflow:hidden;">
+                                     {$cate.desc}
+                                </div>
+                                <div class="b">
+                                    <a href="http://localhost/LearnPhp/bick/public/index/article/index/id/{$cate.id}" class="xh_readmore" rel="nofollow">read more</a>
+                                    <span title="0人赞" aid="{$cate['id']}" class="xh_love">
+                                        <span class="textcontainer">
+                                            <span>{$cate.zan}</span>
+                                        </span>
+                                    </span>
+                                    <span title="88人浏览" class="xh_views">88</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                {/foreach}
+                <div id="pagination"><div class="wp-pagenavi">
+                {$cateid->render()}
+                </div></div>
+
+            </div>
+        </div>
+
+
+        <div id="xh_sidebar">        
+<!-- 右侧 -->
+
+         <div class="widget">
+
+<div style="background: url('__IMG__/hots_bg.png') no-repeat scroll 0 0 transparent;width:250px;height:52px;margin-bottom:15px;">
+</div>
+<ul id="ulHot">
+
+    {foreach $right as $rt}
+
+<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
+<div style="float:left;width:85px;height:55px; overflow:hidden;">
+    <a href="http://localhost/LearnPhp/bick/public/index/article/index/id/{$rt.id}" target="_blank">
+    <img src="http://localhost/LearnPhp/bick/public{$rt.thumb}" width="83" title="{$rt.title}" /></a></div>
+<div style="float:right;width:145px;height:52px; overflow:hidden;">
+    <a href="http://localhost/LearnPhp/bick/public/index/article/index/id/{$rt.id}" target="_blank" title="{$rt.title}">{$rt.title}</a></div>
+</li>
+
+
+{/foreach}
+</ul>
+                </div>
+            
+            <div class="widget portrait">
+    <div>
+        <div class="textwidget">
+            <a href="/tougao.html"><img src="__IMG__/tg.jpg" alt="鎶曠ǹ"></a><br><br>
+<script type="text/javascript">BAIDU_CLB_fillSlot("870073");</script>
+<script type="text/javascript">BAIDU_CLB_fillSlot("870080");</script>
+<script type="text/javascript">BAIDU_CLB_fillSlot("870081");</script>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="boxBor"></div>
+
+    <div class="boxBor" onclick="IBoxBor()" style="cursor:pointer;"></div>
+    <script type="text/javascript">
+        $(function () {
+            var imgHoverSetTimeOut = null;
+            $('.xh_265x265 img').hover(function () {
+                var oPosition = $(this).offset();
+                var oThis = $(this);
+                $(".boxBor").css({
+                    left: oPosition.left,
+                    top: oPosition.top,
+                    width: oThis.width(),
+                    height: oThis.height()
+                });
+                $(".boxBor").show();
+                var urlText = $(this).parent().attr("href");
+                $("#hdBoxbor").val(urlText);
+            }, function () {
+                imgHoverSetTimeOut = setTimeout(function () { $(".boxBor").hide(); }, 500);
+            });
+            $(".boxBor").hover(
+                function () {
+                    clearTimeout(imgHoverSetTimeOut);
+                }
+                , function () {
+                    $(".boxBor").hide();
+                }
+            );
+        });
+        function IBoxBor() {
+            window.open($("#hdBoxbor").val());
+        }
+        function goanewurl() {
+            window.open($("#hdUrlFocus").val());
+        }
+</script>
+
+    </div>
+
